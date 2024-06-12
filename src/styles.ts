@@ -1,4 +1,4 @@
-import { createGlobalStyle } from "styled-components";
+import { createGlobalStyle, styled } from "styled-components";
 
 const cores = {
   bege1: "#fff8f2",
@@ -14,8 +14,15 @@ export const GlobalCss = createGlobalStyle`
     box-sizing: border-box;
     font-family: Roboto, sans-serif
   }
+
   body{
-  background-color: ${cores.bege2};
+  background-color: ${cores.bege1};
   color: ${cores.rosa};
   }
+`;
+
+export const Container = styled.div`
+  max-width: 1024px;
+  width: 100%;
+  margin: 0 auto;
 `;

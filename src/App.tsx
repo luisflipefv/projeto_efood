@@ -1,10 +1,13 @@
-import { GlobalCss } from "./styles";
+import { Container, GlobalCss } from "./styles";
+import Hero from "./components/Hero";
 
 function App() {
   return (
     <>
       <GlobalCss />
-      <div className="App">olá mundo</div>
+      <div className="App">
+        <Hero></Hero>
+      </div>
     </>
   );
 }
