@@ -19,10 +19,10 @@ export const GlobalCss = createGlobalStyle`
   background-color: ${cores.bege1};
   color: ${cores.rosa};
   }
-`;
 
-export const Container = styled.div`
+  .container{
   max-width: 1024px;
   width: 100%;
   margin: 0 auto;
+  }
 `;
