@@ -3,7 +3,7 @@ import { ButtonContainer } from "./styles";
 export type Props = {
   type: "button" | "link";
   children: string;
-  title: string;
+  title?: string;
   to?: string;
   onClick?: () => void;
 };

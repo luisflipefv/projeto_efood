@@ -2,12 +2,17 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { GlobalCss } from "./styles";
 import Hero from "./components/Hero";
 import Button from "./components/Button";
-import ButtonSec from "./components/ButtonSec";
-
+import Product from "./components/Product";
+import ProductList from "./components/ProductList";
 const rotas = createBrowserRouter([
   {
     path: "/",
-    element: <Hero />,
+    element: (
+      <>
+        <Hero />
+        <ProductList />
+      </>
+    ),
   },
 ]);
 
@@ -21,7 +26,6 @@ function App() {
           Saiba mais
         </Button>
         <br />
-        <ButtonSec>Adicionar ao carrinho</ButtonSec>
       </div>
     </>
   );
