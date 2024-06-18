@@ -1,5 +1,14 @@
+import { Link } from "react-router-dom";
 import Button from "../Button";
-import { Card, Conteudo, Imagem, Infos, Titulo, Div } from "./styles";
+import {
+  Card,
+  Conteudo,
+  Imagem,
+  Infos,
+  Titulo,
+  Div,
+  Descricao,
+} from "./styles";
 
 type Props = {
   image: string;
@@ -28,8 +37,10 @@ const Product = ({ image, title, description, note, icon, infos }: Props) => (
           <img src={icon} alt="Estrela" />
         </div>
       </Div>
-      <p>{description}</p>
-      <Button type={"button"}>Adicionar</Button>
+      <Descricao>{description}</Descricao>
+      <Button to={"/perfil"} type={"button"}>
+        Saiba mais
+      </Button>
     </Conteudo>
   </Card>
 );

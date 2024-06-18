@@ -12,7 +12,7 @@ export const ButtonContainer = styled.div<Props>`
   display: inline-block;
 `;
 
-export const LinkContainer = styled(Link)`
+export const LinkContainer = styled(Link)<Props>`
   color: ${cores.bege1};
   background-color: ${cores.rosa};
   font-weight: bold;

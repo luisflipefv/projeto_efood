@@ -1,34 +1,28 @@
 import Product from "../Product";
-import { List, Container } from "./styles";
+import Pratos from "../../models/Pratos";
 import Sushi from "../../assets/images/sushi.png";
 import Estrela from "../../assets/images/estrela.png";
+import { List, Container } from "./styles";
 
-const ProductList = () => (
+type Props = {
+  prato: Pratos[];
+};
+
+const ProductList = ({ prato }: Props) => (
   <Container>
-    <div className="container">
-      <List>
+    <List className="container">
+      {prato.map((pratos) => (
         <Product
-          image={Sushi}
-          infos={["Destaque da Semana", "Japonesa"]}
-          title={"Hioki Sushi "}
-          description={
-            "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!"
-          }
-          note={4.9}
-          icon={Estrela}
+          key={pratos.id}
+          image={pratos.image}
+          infos={pratos.infos}
+          title={pratos.title}
+          description={pratos.description}
+          note={pratos.note}
+          icon={pratos.icon}
         />
-        <Product
-          image={Sushi}
-          infos={["Japonesa"]}
-          title={"Hioki Sushi "}
-          description={
-            "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!"
-          }
-          note={4.9}
-          icon={Estrela}
-        />
-      </List>
-    </div>
+      ))}
+    </List>
   </Container>
 );
 

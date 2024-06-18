@@ -1,33 +1,21 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { GlobalCss } from "./styles";
-import Hero from "./components/Hero";
-import Button from "./components/Button";
-import Product from "./components/Product";
-import ProductList from "./components/ProductList";
-const rotas = createBrowserRouter([
-  {
-    path: "/",
-    element: (
-      <>
-        <Hero />
-        <ProductList />
-      </>
-    ),
-  },
-]);
+import Home from "../src/pages/Home";
+import Perfil from "./pages/Perfil";
+
+const Rotas = () => (
+  <Routes>
+    <Route path="/" element={<Home />} />
+    <Route path="/perfil" element={<Perfil />} />
+  </Routes>
+);
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <GlobalCss />
-      <RouterProvider router={rotas} />
-      <div className="container">
-        <Button type="button" title="Clique aqui para saber mais">
-          Saiba mais
-        </Button>
-        <br />
-      </div>
-    </>
+      <Rotas />
+    </BrowserRouter>
   );
 }
 

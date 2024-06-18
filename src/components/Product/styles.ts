@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { cores } from "../../styles";
-import { ButtonContainer } from "../Button/styles";
+import { LinkContainer } from "../Button/styles";
 
 export const Imagem = styled.img`
   width: 100%;
@@ -20,7 +20,7 @@ export const Conteudo = styled.div`
   padding: 8px;
   border: 1px solid ${cores.rosa};
 
-  ${ButtonContainer} {
+  ${LinkContainer} {
     margin-top: 16px;
   }
 `;
@@ -39,13 +39,16 @@ export const Titulo = styled.h3`
   display: flex;
 `;
 
-export const Descricao = styled.p``;
+export const Descricao = styled.p`
+  line-height: 22px;
+  font-size: 14px;
+`;
 
 export const Infos = styled.div`
   position: absolute;
   top: 0px;
   right: 0px;
-  ${ButtonContainer} {
+  ${LinkContainer} {
     margin-right: 16px;
   }
 `;
