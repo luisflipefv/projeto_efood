@@ -21,3 +21,14 @@ export const LinkContainer = styled(Link)<Props>`
   display: inline-block;
   text-decoration: none;
 `;
+
+export const AddContainer = styled(Link)<Props>`
+  color: ${cores.rosa};
+  background-color: ${cores.bege1};
+  font-weight: bold;
+  font-size: 14px;
+  padding: 8px;
+  display: block;
+  text-decoration: none;
+  text-align: center;
+`;

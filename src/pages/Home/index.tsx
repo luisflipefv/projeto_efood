@@ -27,7 +27,7 @@ const principal: Pratos[] = [
     infos: ["Italiana"],
   },
   {
-    id: 1,
+    id: 3,
     image: sushi,
     note: 4.9,
     icon: estrela,
@@ -37,7 +37,7 @@ const principal: Pratos[] = [
     infos: ["Japonesa"],
   },
   {
-    id: 1,
+    id: 4,
     image: sushi,
     note: 4.9,
     icon: estrela,
@@ -51,7 +51,7 @@ const principal: Pratos[] = [
 const Home = () => (
   <>
     <Hero />
-    <ProductList prato={principal} />
+    <ProductList type="principal" prato={principal} pratoProfile={[]} />
   </>
 );
 

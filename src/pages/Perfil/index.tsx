@@ -1,55 +1,61 @@
-import Hero from "../../components/Hero";
+import Hero2 from "../../components/Hero2";
 import ProductList from "../../components/ProductList";
 import Pratos from "../../models/Pratos";
-import sushi from "../../assets/images/sushi.png";
-import estrela from "../../assets/images/estrela.png";
+import pizza from "../../assets/images/pizza.png";
+import { Link } from "react-router-dom";
+import PratosProfile from "../../models/PratosProfile";
 
-const principal: Pratos[] = [
+type PratoProfile = Omit<Pratos, "infos" | "note" | "icon">;
+
+const principal: PratoProfile[] = [
   {
     id: 1,
-    image: sushi,
-    note: 4.9,
-    icon: estrela,
-    title: "Hioki Shushi",
+    image: pizza,
+    title: "Pizza Marguerita",
     description:
-      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
-    infos: ["Destaque da semana", "Japonesa"],
+      "A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!",
   },
   {
-    id: 1,
-    image: sushi,
-    note: 4.9,
-    icon: estrela,
-    title: "Hioki Shushi",
+    id: 2,
+    image: pizza,
+    title: "Pizza Marguerita",
     description:
-      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
-    infos: ["Destaque da semana", "Japonesa"],
+      "A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!",
   },
   {
-    id: 1,
-    image: sushi,
-    note: 4.9,
-    icon: estrela,
-    title: "Hioki Shushi",
+    id: 3,
+    image: pizza,
+    title: "Pizza Marguerita",
     description:
-      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
-    infos: ["Destaque da semana", "Japonesa"],
+      "A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!",
   },
   {
-    id: 1,
-    image: sushi,
-    note: 4.9,
-    icon: estrela,
-    title: "Hioki Shushi",
+    id: 4,
+    image: pizza,
+    title: "Pizza Marguerita",
     description:
-      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
-    infos: ["Destaque da semana", "Japonesa"],
+      "A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!",
+  },
+  {
+    id: 5,
+    image: pizza,
+    title: "Pizza Marguerita",
+    description:
+      "A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!",
+  },
+  {
+    id: 6,
+    image: pizza,
+    title: "Pizza Marguerita",
+    description:
+      "A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!",
   },
 ];
 
 const Perfil = () => (
   <>
-    <ProductList prato={principal} />
+    <Hero2 />
+    <ProductList type="profile" pratoProfile={principal} prato={[]} />
   </>
 );
 

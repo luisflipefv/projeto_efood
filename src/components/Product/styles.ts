@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { cores } from "../../styles";
-import { LinkContainer } from "../Button/styles";
+import { LinkContainer, ButtonContainer } from "../Button/styles";
 
 export const Imagem = styled.img`
   width: 100%;
@@ -21,6 +21,9 @@ export const Conteudo = styled.div`
   border: 1px solid ${cores.rosa};
 
   ${LinkContainer} {
+    margin-top: 16px;
+  }
+  ${ButtonContainer} {
     margin-top: 16px;
   }
 `;
@@ -49,6 +52,9 @@ export const Infos = styled.div`
   top: 0px;
   right: 0px;
   ${LinkContainer} {
+    margin-right: 16px;
+  }
+  ${ButtonContainer} {
     margin-right: 16px;
   }
 `;
