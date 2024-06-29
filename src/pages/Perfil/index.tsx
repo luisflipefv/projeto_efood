@@ -1,62 +1,57 @@
 import Hero2 from "../../components/Hero2";
-import ProductList from "../../components/ProductList";
-import Pratos from "../../models/Pratos";
-import pizza from "../../assets/images/pizza.png";
-import { Link } from "react-router-dom";
-import PratosProfile from "../../models/PratosProfile";
+import { useParams } from "react-router-dom";
+import ProductList2 from "../../components/ProductList2";
+import { useEffect, useState } from "react";
+import { Cardapio, Restaurante } from "../Home";
 
-type PratoProfile = Omit<Pratos, "infos" | "note" | "icon">;
+const Perfil = () => {
+  const { id } = useParams();
 
-const principal: PratoProfile[] = [
-  {
-    id: 1,
-    image: pizza,
-    title: "Pizza Marguerita",
-    description:
-      "A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!",
-  },
-  {
-    id: 2,
-    image: pizza,
-    title: "Pizza Marguerita",
-    description:
-      "A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!",
-  },
-  {
-    id: 3,
-    image: pizza,
-    title: "Pizza Marguerita",
-    description:
-      "A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!",
-  },
-  {
-    id: 4,
-    image: pizza,
-    title: "Pizza Marguerita",
-    description:
-      "A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!",
-  },
-  {
-    id: 5,
-    image: pizza,
-    title: "Pizza Marguerita",
-    description:
-      "A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!",
-  },
-  {
-    id: 6,
-    image: pizza,
-    title: "Pizza Marguerita",
-    description:
-      "A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!",
-  },
-];
+  // const { data: restaurante } = useGetRestaurantSelectedQuery(id!);
 
-const Perfil = () => (
-  <>
-    <Hero2 />
-    <ProductList type="profile" pratoProfile={principal} prato={[]} />
-  </>
-);
+  // if (!restaurante) {
+  //   return <h3>Carregando...</h3>;
+  // }
+
+  const [restaurante, setRestaurante] = useState<Restaurante>();
+
+  const [cardapio, setCardapio] = useState<Cardapio[]>([]);
+  useEffect(() => {
+    let isMounted = true;
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => res.json())
+      .then((res) => setRestaurante(res));
+    fetch(`https://fake-api-tau.vercel.app/api/efood/restaurantes/${id}`)
+      .then((res) => {
+        if (!res.ok) {
+          throw new Error("Falha ao acarregar os dados");
+        }
+        return res.json();
+      })
+      .then((res: Restaurante) => {
+        if (isMounted) {
+          setCardapio(res.cardapio);
+        }
+      })
+      .catch((error) => {
+        console.error("Erro ao buscar o cardápio", error);
+      });
+  }, [id]);
+
+  if (!cardapio) {
+    return <h3>Carregando...</h3>;
+  }
+
+  if (!restaurante) {
+    return <h3>Carregando...</h3>;
+  }
+
+  return (
+    <>
+      <Hero2 restaurante={restaurante} />
+      <ProductList2 produtos={cardapio} />
+    </>
+  );
+};
 
 export default Perfil;

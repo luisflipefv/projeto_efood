@@ -1,47 +1,26 @@
 import Product from "../Product";
-import Product2 from "../Product2";
-import Pratos from "../../models/Pratos";
-import PratosProfile from "../../models/PratosProfile";
-import { List, Container, ListProfile } from "./styles";
+import { List, Container } from "./styles";
+import { Restaurante } from "../../pages/Home";
 
-type Props = {
-  prato: Pratos[];
-  type: "principal" | "profile";
-  pratoProfile: PratosProfile[];
+export type Props = {
+  restaurantes: Restaurante[];
 };
 
-const ProductList = ({ prato, type, pratoProfile }: Props) => {
-  if (type === "principal") {
-    return (
-      <Container>
-        <List className="container">
-          {prato.map((pratos) => (
-            <Product
-              key={pratos.id}
-              image={pratos.image}
-              infos={pratos.infos}
-              title={pratos.title}
-              description={pratos.description}
-              note={pratos.note}
-              icon={pratos.icon}
-            />
-          ))}
-        </List>
-      </Container>
-    );
-  }
+const ProductList = ({ restaurantes }: Props) => {
   return (
     <Container>
-      <ListProfile className="container">
-        {pratoProfile.map((pratos) => (
-          <Product2
-            key={pratos.id}
-            image={pratos.image}
-            title={pratos.title}
-            description={pratos.description}
+      <List className="container">
+        {restaurantes.map((restaurante) => (
+          <Product
+            key={restaurante.id}
+            id={restaurante.id}
+            capa={restaurante.capa}
+            titulo={restaurante.titulo}
+            descricao={restaurante.descricao}
+            avaliacao={restaurante.avaliacao}
           />
         ))}
-      </ListProfile>
+      </List>
     </Container>
   );
 };

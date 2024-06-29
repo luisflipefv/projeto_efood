@@ -1,44 +1,36 @@
-import { Link } from "react-router-dom";
+import estrela from "../../assets/images/estrela.png";
 import Button from "../Button";
-import {
-  Card,
-  Conteudo,
-  Imagem,
-  Infos,
-  Titulo,
-  Div,
-  Descricao,
-} from "./styles";
+import { Card, Conteudo, Imagem, Titulo, Div, Descricao } from "./styles";
 
 type Props = {
-  image: string;
-  title: string;
-  description: string;
-  note: number;
-  icon: string;
-  infos: string[];
+  titulo: string;
+  avaliacao: number;
+  descricao: string;
+  capa: string;
+  id: number;
+  // infos: string[];
 };
 
-const Product = ({ image, title, description, note, icon, infos }: Props) => (
+const Product = ({ capa, titulo, descricao, avaliacao, id }: Props) => (
   <Card className="container">
-    <Imagem src={image} alt={title} />
+    <Imagem src={capa} alt="Foto do restaurante" />
     <Conteudo>
-      <Infos>
+      {/* <Infos>
         {infos.map((info) => (
           <Button type="link" key={info}>
             {info}
           </Button>
         ))}
-      </Infos>
+      </Infos> */}
       <Div>
-        <Titulo>{title}</Titulo>
+        <Titulo>{titulo}</Titulo>
         <div>
-          <Titulo>{note}</Titulo>
-          <img src={icon} alt="Estrela" />
+          <Titulo>{avaliacao}</Titulo>
+          <img src={estrela} alt="Estrela" />
         </div>
       </Div>
-      <Descricao>{description}</Descricao>
-      <Button to={"/perfil"} type={"button"}>
+      <Descricao>{descricao}</Descricao>
+      <Button to={`/perfil/${id}`} type={"button"}>
         Saiba mais
       </Button>
     </Conteudo>

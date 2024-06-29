@@ -1,58 +1,49 @@
+import { useEffect, useState } from "react";
 import Hero from "../../components/Hero";
 import ProductList from "../../components/ProductList";
-import Pratos from "../../models/Pratos";
-import sushi from "../../assets/images/sushi.png";
-import estrela from "../../assets/images/estrela.png";
-import massa from "../../assets/images/macarrao.png";
 
-const principal: Pratos[] = [
-  {
-    id: 1,
-    image: sushi,
-    note: 4.9,
-    icon: estrela,
-    title: "Hioki Shushi",
-    description:
-      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
-    infos: ["Destaque da semana", "Japonesa"],
-  },
-  {
-    id: 2,
-    image: massa,
-    note: 4.6,
-    icon: estrela,
-    title: "La Dolce Vita Trattoria",
-    description:
-      "A La Dolce Vita Trattoria leva a autêntica cozinha italiana até você! Desfrute de massas caseiras, pizzas deliciosas e risotos incríveis, tudo no conforto do seu lar. Entrega rápida, pratos bem embalados e sabor inesquecível. Peça já!",
-    infos: ["Italiana"],
-  },
-  {
-    id: 3,
-    image: sushi,
-    note: 4.9,
-    icon: estrela,
-    title: "Hioki Shushi",
-    description:
-      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
-    infos: ["Japonesa"],
-  },
-  {
-    id: 4,
-    image: sushi,
-    note: 4.9,
-    icon: estrela,
-    title: "Hioki Shushi",
-    description:
-      "Peça já o melhor da culinária japonesa no conforto da sua casa! Sushis frescos, sashimis deliciosos e pratos quentes irresistíveis. Entrega rápida, embalagens cuidadosas e qualidade garantida.Experimente o Japão sem sair do lar com nosso delivery!",
-    infos: ["Japonesa"],
-  },
-];
+export interface Cardapio {
+  foto: string;
+  preco: number;
+  id: number;
+  nome: string;
+  descricao: string;
+  porcao: string;
+}
 
-const Home = () => (
-  <>
-    <Hero />
-    <ProductList type="principal" prato={principal} pratoProfile={[]} />
-  </>
-);
+export type Restaurante = {
+  id: number;
+  titulo: string;
+  tipo: string;
+  avaliacao: number;
+  descricao: string;
+  capa: string;
+  cardapio: Cardapio[];
+};
+
+const Home = () => {
+  // const { isLoading, error, data: restaurantes } = useGetRestaurantsQuery();
+
+  // if (isLoading) {
+  //   return <p>Carregando...</p>;
+  // }
+  // if (error) {
+  //   return <p>Ocorreu um erro ao carregar os restaurantes</p>;
+  // }
+  const [restaurantes, setRestaurantes] = useState<Restaurante[]>([]);
+  useEffect(() => {
+    fetch("https://fake-api-tau.vercel.app/api/efood/restaurantes")
+      .then((res) => res.json())
+      .then((res) => setRestaurantes(res));
+  }, []);
+
+  return (
+    <>
+      <Hero />
+      <ProductList restaurantes={restaurantes} />
+      {/* {restaurantes && <ProductList restaurantes={restaurantes} />} */}
+    </>
+  );
+};
 
 export default Home;

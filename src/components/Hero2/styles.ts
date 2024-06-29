@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import fundo from "../../assets/images/fundo.svg";
-import fundoMacarrao from "../../assets/images/imagem de fundo.png";
 import { Link } from "react-router-dom";
 import { cores } from "../../styles";
 
@@ -42,8 +41,8 @@ export const Carrinho = styled.p`
 `;
 
 export const Imagem = styled.div`
-  background-image: url("${fundoMacarrao}");
   background-size: cover;
+  background-position: center;
   height: 280px;
   width: 100%;
   display: block;
@@ -51,6 +50,15 @@ export const Imagem = styled.div`
   margin-bottom: 30px;
   margin-top: 64px;
   position: relative;
+
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+  }
 `;
 
 export const P1 = styled.p`
@@ -59,6 +67,7 @@ export const P1 = styled.p`
   color: ${cores.branco};
   position: absolute;
   top: 25px;
+  z-index: 1;
 `;
 
 export const P2 = styled.p`
@@ -67,4 +76,5 @@ export const P2 = styled.p`
   color: ${cores.branco};
   position: absolute;
   top: 215px;
+  z-index: 1;
 `;

@@ -1,4 +1,5 @@
 import logo from "../../assets/images/logo.svg";
+import { Restaurante } from "../../pages/Home";
 import {
   Header2,
   Imagem,
@@ -9,18 +10,23 @@ import {
   P2,
 } from "./styles";
 
-const Hero2 = () => (
+export type Props = {
+  restaurante: Restaurante;
+};
+
+const Hero2 = ({ restaurante }: Props) => (
   <Header2>
     <TelaRestaurants className="container">
       <Title to="/">Restaurantes</Title>
       <img src={logo} alt="" />
       <Carrinho>0 produto(s) no carrinho</Carrinho>
     </TelaRestaurants>
-    <Imagem>
+    <Imagem style={{ backgroundImage: `url(${restaurante.capa})` }}>
       <div className="container">
-        <P1>Italiana</P1>
-        <P2>La Dolce Vita Trattoria</P2>
+        <P1>{restaurante.tipo}</P1>
+        <P2>{restaurante.titulo}</P2>
       </div>
+      <div className="overlay"></div>
     </Imagem>
   </Header2>
 );

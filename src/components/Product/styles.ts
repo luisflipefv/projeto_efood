@@ -3,8 +3,11 @@ import { cores } from "../../styles";
 import { LinkContainer, ButtonContainer } from "../Button/styles";
 
 export const Imagem = styled.img`
+  max-width: 470px;
   width: 100%;
+  height: 217px;
   display: block;
+  object-fit: cover;
 `;
 
 export const Card = styled.div`
