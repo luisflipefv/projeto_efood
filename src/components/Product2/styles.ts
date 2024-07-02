@@ -95,7 +95,7 @@ export const Text = styled.div`
   }
 
   ${AddContainer} {
-    width: 218px;
+    width: 220px;
     heigh: 24px;
     font-weight: bold;
     font-size: 14px;
