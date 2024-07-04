@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Hero from "../../components/Hero";
 import ProductList from "../../components/ProductList";
+import { useGetRestaurantsQuery } from "../../services/api";
 
 export interface Cardapio {
   foto: string;
@@ -22,28 +23,17 @@ export type Restaurante = {
 };
 
 const Home = () => {
-  // const { isLoading, error, data: restaurantes } = useGetRestaurantsQuery();
+  const { data: restaurantes } = useGetRestaurantsQuery();
 
-  // if (isLoading) {
-  //   return <p>Carregando...</p>;
-  // }
-  // if (error) {
-  //   return <p>Ocorreu um erro ao carregar os restaurantes</p>;
-  // }
-  const [restaurantes, setRestaurantes] = useState<Restaurante[]>([]);
-  useEffect(() => {
-    fetch("https://fake-api-tau.vercel.app/api/efood/restaurantes")
-      .then((res) => res.json())
-      .then((res) => setRestaurantes(res));
-  }, []);
-
-  return (
-    <>
-      <Hero />
-      <ProductList restaurantes={restaurantes} />
-      {/* {restaurantes && <ProductList restaurantes={restaurantes} />} */}
-    </>
-  );
+  if (restaurantes) {
+    return (
+      <>
+        <Hero />
+        <ProductList restaurantes={restaurantes} />
+      </>
+    );
+  }
+  return <h4>Carregando...</h4>;
 };
 
 export default Home;
