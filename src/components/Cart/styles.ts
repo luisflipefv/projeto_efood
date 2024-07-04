@@ -12,7 +12,7 @@ export const CartContainer = styled.div`
   display: none;
   justify-content: flex-end;
 
-  .isOpen {
+  &.is-open {
     display: flex;
   }
 
@@ -32,6 +32,7 @@ export const Sidebar = styled.aside`
   z-index: 1;
   background-color: ${cores.rosa};
   padding: 32px 8px 16px 8px;
+  overflow: auto;
 `;
 
 export const Prices = styled.div`
@@ -77,5 +78,6 @@ export const Item = styled.div`
     right: 8px;
     height: 16px;
     width: 16px;
+    cursor: pointer;
   }
 `;

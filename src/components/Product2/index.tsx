@@ -1,5 +1,4 @@
 import Button from "../Button";
-import {} from "./styles";
 import close from "../../assets/images/close.png";
 import {
   ModalCard,
@@ -12,6 +11,10 @@ import {
   Title,
 } from "./styles";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { RootReducer } from "../../store";
+import { open, add } from "../../store/reducers/cart";
+import { Cardapio } from "../../pages/Home";
 
 type Props = {
   id: number;
@@ -29,6 +32,14 @@ export const formataPreco = (preco = 0) => {
   }).format(preco);
 };
 const Product2 = ({ foto, nome, descricao, id, porcao, preco }: Props) => {
+  const { isOpen, items } = useSelector((state: RootReducer) => state.cart);
+  const dispatch = useDispatch();
+  const addToCart = () => {
+    const product = { id, nome, descricao, foto, porcao, preco };
+    setIsVisible(false);
+    dispatch(open());
+    dispatch(add(product));
+  };
   const [isVisible, setIsVisible] = useState(false);
 
   const getDescription = (descricao: string) => {
@@ -58,7 +69,7 @@ const Product2 = ({ foto, nome, descricao, id, porcao, preco }: Props) => {
               <p>{descricao}</p>
               <br />
               <p>Porção: {porcao}</p>
-              <Button type={"add"}>
+              <Button type={"add"} onClick={addToCart}>
                 {`Adicionar ao carrinho - ${formataPreco(preco)}`}
               </Button>
             </Text>

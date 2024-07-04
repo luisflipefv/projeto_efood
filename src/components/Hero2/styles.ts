@@ -34,10 +34,16 @@ export const Title = styled(Link)`
   color: ${cores.rosa};
 `;
 
-export const Carrinho = styled.p`
+export const Carrinho = styled.button`
   font-weight: bold;
   font-size: 18px;
   text-decoration: none;
+  background: none;
+  border: none;
+  font-size: 18px;
+  font-weight: bold;
+  color: ${cores.rosa};
+  cursor: pointer;
 `;
 
 export const Imagem = styled.div`
