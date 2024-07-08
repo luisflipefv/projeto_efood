@@ -1,12 +1,15 @@
 import styled from "styled-components";
 import fundo from "../../assets/images/fundo.svg";
-import fundoMacarrao from "../../assets/images/imagem de fundo.png";
+import { breakpoints } from "../../styles";
 
 export const Header = styled.div`
   background-image: url("${fundo}");
+  background-size: cover;
   height: 384px;
   width: 100%;
   padding-top: 64px;
+  margin: 0 auto;
+  text-align: center;
   img {
     display: block;
     margin: 0 auto;
@@ -18,16 +21,15 @@ export const Header = styled.div`
     font-weight: bold;
     font-size: 36px;
     line-height: 42px;
+    @media (max-width: ${breakpoints.tablet}) {
+      font-size: 22px;
+      width: 80%;
+    }
   }
-`;
 
-export const TelaRestaurants = styled.div`
-  display: flex;
-  justify-content: space-between;
-`;
-
-export const BannerRestaurants = styled.div`
-  background-image: url("${fundoMacarrao}");
-  height: 280px;
-  margin-top: 65px;
+  @media (max-width: ${breakpoints.tablet}) {
+      max-width: 768px;
+      width: 100%;
+    }
+  }
 `;

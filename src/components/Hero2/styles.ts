@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import fundo from "../../assets/images/fundo.svg";
 import { Link } from "react-router-dom";
-import { cores } from "../../styles";
+import { breakpoints, cores } from "../../styles";
 
 export const Header2 = styled.div`
   background-image: url("${fundo}");

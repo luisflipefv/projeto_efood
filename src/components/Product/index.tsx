@@ -12,7 +12,7 @@ type Props = {
 };
 
 const Product = ({ capa, titulo, descricao, avaliacao, id }: Props) => (
-  <Card className="container">
+  <Card className="">
     <Imagem src={capa} alt="Foto do restaurante" />
     <Conteudo>
       {/* <Infos>
