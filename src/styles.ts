@@ -5,6 +5,7 @@ export const cores = {
   bege2: "#ffebd9",
   rosa: "#e66767",
   branco: "#ffffff",
+  inputTxt: "#4b4b4b",
 };
 
 export const breakpoints = {

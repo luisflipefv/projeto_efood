@@ -1,6 +1,15 @@
 import styled from "styled-components";
 import { cores } from "../../styles";
 import lixo from "../../assets/images/lixeira-de-reciclagem 1.png";
+import { Link } from "react-router-dom";
+
+type InputProps = {
+  maxWidth?: string;
+};
+
+type InputGroupProps = {
+  maxWidth?: string;
+};
 
 export const CartContainer = styled.div`
   position: fixed;
@@ -80,4 +89,116 @@ export const Item = styled.div`
     width: 16px;
     cursor: pointer;
   }
+`;
+
+export const CartMenu = styled.div`
+  margin-bottom: 20px;
+`;
+
+export const ConfirmationMenu = styled.div`
+  h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+
+  p {
+    margin-bottom: 22px;
+  }
+`;
+
+export const DeliveryMenu = styled.div`
+  h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+
+  > div {
+    margin-bottom: 24px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+`;
+
+export const InputGroup = styled.div<InputGroupProps>`
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+  width: 100%;
+  max-width: ${(props) => props.maxWidth};
+
+  label {
+    color: #000;
+    margin-bottom: 8px;
+  }
+
+  input {
+    background-color: ${cores.bege2};
+    color: ${cores.inputTxt};
+    border: none;
+    height: 32px;
+    width: 100%;
+    max-width: ${(props) => props.maxWidth};
+
+    &.error {
+      border: 2px solid red;
+    }
+  }
+`;
+
+export const Input = styled.input<InputProps>`
+  background-color: ${cores.bege2};
+  color: ${cores.inputTxt};
+  border: none;
+  height: 32px;
+  width: 100%;
+  max-width: ${(props) => props.maxWidth};
+
+  &.error {
+    border: 2px solid red;
+  }
+`;
+
+export const CartButton = styled.button`
+  width: 100%;
+  border: none;
+  color: ${cores.rosa};
+  background-color: ${cores.bege2};
+  font-weight: bold;
+  paddin: 4px;
+  margin-bottom: 8px;
+`;
+
+export const PaymentMenu = styled.div`
+  h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+  }
+
+  > div {
+    margin-bottom: 24px;
+
+    div {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+`;
+
+export const CartButtonLink = styled(Link)`
+  max-width: 100%;
+  width: 100%;
+  border: none;
+  color: ${cores.rosa};
+  backgroundo-color: ${cores.bege2};
+  font-weight: bold;
+  padding: 4px;
+  margin-bottom: 8px;
+  text-decoration: none;
 `;
