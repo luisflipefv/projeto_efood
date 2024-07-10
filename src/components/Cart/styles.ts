@@ -100,10 +100,12 @@ export const ConfirmationMenu = styled.div`
     font-size: 16px;
     font-weight: bold;
     margin-bottom: 16px;
+    color: ${cores.bege1};
   }
 
   p {
     margin-bottom: 22px;
+    color: ${cores.bege1};
   }
 `;
 

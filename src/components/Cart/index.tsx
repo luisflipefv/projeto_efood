@@ -18,7 +18,7 @@ import {
 import { close, remove } from "../../store/reducers/cart";
 import { RootReducer } from "../../store";
 import { formataPreco } from "../Product2";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePurchaseMutation } from "../../services/api";
 
 const Cart = () => {
@@ -51,7 +51,7 @@ const Cart = () => {
       address: Yup.string().required("Campo obrigatório"),
       city: Yup.string().required("Campo obrigatório"),
       zipCode: Yup.string()
-        .min(9, "O CEP precisa ter 8 números")
+        .min(8, "O CEP precisa ter 8 números")
         .max(8, "O CEP precisa ter 8 números")
         .required("Campo obrigatório"),
       number: Yup.string().required("Campo obrigatório"),
@@ -171,7 +171,7 @@ const Cart = () => {
             </CartButton>
           </ConfirmationMenu>
         ) : (
-          <form onSubmit={() => form.handleSubmit()}>
+          <form onSubmit={form.handleSubmit}>
             {menu === "cart" && (
               <CartMenu>
                 <ul>
@@ -322,10 +322,12 @@ const Cart = () => {
                     />
                   </InputGroup>
                   <div>
-                    <InputGroup>
+                    <InputGroup
+                      maxWidth="228px"
+                      style={{ marginRight: "30px" }}
+                    >
                       <label htmlFor="cardNumber">Número do cartão</label>
                       <Input
-                        maxWidth="288px"
                         type="text"
                         id="cardNumber"
                         name="cardNumber"
@@ -335,10 +337,9 @@ const Cart = () => {
                         className={getError("cardNumber") ? "error" : ""}
                       />
                     </InputGroup>
-                    <InputGroup>
+                    <InputGroup maxWidth="87">
                       <label htmlFor="cardCode">CVV</label>
                       <Input
-                        maxWidth="87px"
                         type="text"
                         id="cardCode"
                         name="cardCode"
@@ -350,10 +351,9 @@ const Cart = () => {
                     </InputGroup>
                   </div>
                   <div>
-                    <InputGroup>
+                    <InputGroup maxWidth="155px">
                       <label htmlFor="expiresMonth">Mês do vencimento</label>
                       <Input
-                        maxWidth="344px"
                         type="text"
                         id="expiresMonth"
                         name="expiresMonth"
@@ -363,10 +363,9 @@ const Cart = () => {
                         className={getError("expiresMonth") ? "error" : ""}
                       />
                     </InputGroup>
-                    <InputGroup>
+                    <InputGroup maxWidth="155px">
                       <label htmlFor="expiresYear">Ano do vencimento</label>
                       <Input
-                        maxWidth="344px"
                         type="text"
                         id="expiresYear"
                         name="expiresYear"
@@ -378,9 +377,7 @@ const Cart = () => {
                     </InputGroup>
                   </div>
                 </div>
-                <CartButton type="submit" onClick={() => form.handleSubmit()}>
-                  Finalizar Pagamento
-                </CartButton>
+                <CartButton type="submit">Finalizar Pagamento</CartButton>
                 <CartButton type="button" onClick={() => setMenu("delivery")}>
                   Voltar para edição de endereço
                 </CartButton>
