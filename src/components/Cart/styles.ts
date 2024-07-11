@@ -109,23 +109,6 @@ export const ConfirmationMenu = styled.div`
   }
 `;
 
-export const DeliveryMenu = styled.div`
-  h3 {
-    font-size: 16px;
-    font-weight: bold;
-    margin-bottom: 16px;
-  }
-
-  > div {
-    margin-bottom: 24px;
-
-    div {
-      display: flex;
-      justify-content: space-between;
-    }
-  }
-`;
-
 export const InputGroup = styled.div<InputGroupProps>`
   font-size: 14px;
   display: flex;
@@ -135,7 +118,7 @@ export const InputGroup = styled.div<InputGroupProps>`
   max-width: ${(props) => props.maxWidth};
 
   label {
-    color: #000;
+    color: ${cores.bege1};
     margin-bottom: 8px;
   }
 
@@ -150,6 +133,24 @@ export const InputGroup = styled.div<InputGroupProps>`
     &.error {
       border: 2px solid red;
     }
+  }
+`;
+
+export const DeliveryMenu = styled.div`
+  h3 {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 16px;
+    color: ${cores.bege1};
+  }
+
+  div {
+    margin-bottom: 24px;
+  }
+
+  .cepNumero {
+    display: flex;
+    column-gap: 54px;
   }
 `;
 
@@ -168,6 +169,7 @@ export const Input = styled.input<InputProps>`
 
 export const CartButton = styled.button`
   width: 100%;
+  height: 24px;
   border: none;
   color: ${cores.rosa};
   background-color: ${cores.bege2};
@@ -196,6 +198,7 @@ export const PaymentMenu = styled.div`
 export const CartButtonLink = styled(Link)`
   max-width: 100%;
   width: 100%;
+  height: 24px;
   border: none;
   color: ${cores.rosa};
   backgroundo-color: ${cores.bege2};
